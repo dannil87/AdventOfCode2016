@@ -5,31 +5,35 @@
 		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/day1.js"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				var sourceFile = document.getElementById('sourceFile');
+				var output = document.getElementById('output');
+
+				sourceFile.addEventListener('change', function(e) {
+					var file = sourceFile.files[0];
+					var textType = /text.*/;					
+					var reader = new FileReader();
+					
+					reader.onload = function(e) {
+						switch(file.name){
+							case "1.txt":
+								output.innerText = day1(reader);
+								break;
+						}
+					}
+					
+					reader.readAsText(file);   
+				});
+			}
+		</script>
 	</head>
 	<body>
 		<div class="container">
-			<ul class="nav nav-tabs">
-				<li class="active"><a data-toggle="tab" href="#1">1</a></li>
-				<li><a data-toggle="tab" href="#2">2</a></li>
-			</ul>
-			<div class="tab-content">
-				<div id="1" class="tab-pane fade-in active">
-					<label class="btn btn-default btn-file">
-						Välj fil <input type="file" style="display: none;" id="file1">
-					</label>
-					<div id="output1">						
-					</div>
-				</div>
-				<div id="2" class="tab-pane fade-in">
-					<label class="btn btn-default btn-file">
-						Välj fil <input type="file" style="display: none;" id="file2">
-					</label>
-				</div>
-				<div id="3" class="tab-pane fade-in">
-					<label class="btn btn-default btn-file">
-						Välj fil <input type="file" style="display: none;" id="file3">
-					</label>
-				</div>
+			<label class="btn btn-default btn-file">
+				Välj fil <input type="file" style="display: none;" id="sourceFile">
+			</label>
+			<div id="output">						
 			</div>
 		</div>
 	</body>
