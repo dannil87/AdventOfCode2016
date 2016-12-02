@@ -5,6 +5,7 @@
 		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/day1.js"></script>
+		<script type="text/javascript" src="js/day2.js"></script>
 		<script type="text/javascript">
 			window.onload = function() {
 				var sourceFile = document.getElementById('sourceFile');
@@ -19,6 +20,9 @@
 						switch(file.name){
 							case "1.txt":
 								output.innerText = day1(reader);
+								break;
+							case "2.txt":
+								output.innerText = day2(reader);
 								break;
 						}
 					}
