@@ -10,6 +10,7 @@
 		<script type="text/javascript" src="js/day3.js"></script>
 		<script type="text/javascript" src="js/day4.js"></script>
 		<script type="text/javascript" src="js/day5.js"></script>
+		<script type="text/javascript" src="js/day6.js"></script>
 		<script type="text/javascript">
 			window.onload = function() {
 				var sourceFile = document.getElementById('sourceFile');
@@ -35,7 +36,10 @@
 								output.innerText = day4(reader);
 								break;
 							case "5.txt":
-								output.innerText = day5(reader);
+								output.innerText = day5(reader.result);
+								break;
+							case "6.txt":
+								output.innerText = day6(reader);
 								break;
 						}
 					}
