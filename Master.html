@@ -12,12 +12,15 @@
 		<script type="text/javascript" src="js/day5.js"></script>
 		<script type="text/javascript" src="js/day6.js"></script>
 		<script type="text/javascript" src="js/day7.js"></script>
+		<script type="text/javascript" src="js/day8.js"></script>
 		<script type="text/javascript">
 			window.onload = function() {
 				var sourceFile = document.getElementById('sourceFile');
 				var output = document.getElementById('output');
+				var timeOutput = document.getElementById('time');
 
 				sourceFile.addEventListener('change', function(e) {
+					var start = new Date().getTime();console.log(start);
 					var file = sourceFile.files[0];
 					var textType = /text.*/;					
 					var reader = new FileReader();
@@ -45,10 +48,15 @@
 							case "7.txt":
 								output.innerText = day7(reader);
 								break;
+							case "8.txt":
+								output.innerHTML = day8(reader);
+								break;
 						}
+						var end = new Date().getTime();
+						var time = end - start;
+						timeOutput.innerText = "Runtime: " + time + " ms";				
 					}
-					
-					reader.readAsText(file);   
+					reader.readAsText(file);
 				});
 			}
 		</script>
@@ -58,8 +66,8 @@
 			<label class="btn btn-default btn-file">
 				Välj fil <input type="file" style="display: none;" id="sourceFile">
 			</label>
-			<div id="output">						
-			</div>
+			<span class="container-fluid" id="output"></span>
+			<span class="container-fluid" id="time"></span>
 		</div>
 	</body>
 </html>
